@@ -8,9 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class DatabaseManager {
+    private static boolean first = true;
 
     private static Connection getConnection() throws SQLException
     {
+        if (first)
+        {
+            DatabaseSetup.start();
+            first = false;
+        }
         return DriverManager.getConnection("jdbc:postgresql://database:5432/postgres?currentSchema=assignment","postgres","postgres");
     }
 
