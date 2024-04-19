@@ -1,9 +1,9 @@
 name: CI
 
 on:
-    # Trigger the workflow on push from the main branch
-    branches:
-      - main
+    push: # Trigger the workflow on push from the main branch
+      branches:
+        - main
 
 jobs:
   # Test's job
