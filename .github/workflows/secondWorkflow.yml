@@ -3,7 +3,7 @@ name: CI
 on:
     push: # Trigger the workflow on push from the main branch test
       branches:
-        - main
+        - [main]
 
 jobs:
   # Test's job
