@@ -1,3 +1,7 @@
+on:
+  push:
+    branches:
+      - master
 # Build job
 build:
   # depends on test's job
