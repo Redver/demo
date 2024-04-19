@@ -1,6 +1,5 @@
 name: CI Pipeline (DOC1)
 on:
-  workflow_dispatch: # Trigger the workflow manually
   push:
     branches: [main] # Trigger the workflow on push from the main branch
 jobs:
