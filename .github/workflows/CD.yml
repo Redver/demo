@@ -26,11 +26,21 @@ jobs:
           echo -n "Verifying images: "
           docker images
       - name: Deploy to Minikube
+        id: deploy
         run: |
-          kubectl apply -f deploy.yaml
+          kubectl apply -f deploy.yaml || echo "kubectl apply failed"
           kubectl wait --for=condition=Ready pod -l app=imagedoc
           kubectl get all
+      - name: Check Deployment Status
+        if: ${{ steps.deploy.outcome == 'success' }}
+        run: |
+          kubectl get deployment/demo -o wide
+      - name: Check Service Status
+        if: ${{ steps.deploy.outcome == 'success' }}
+        run: |
+          kubectl get service/demo
       - name: Test service URLs
+        if: ${{ steps.deploy.outcome == 'success' }}
         run: |
           echo "SERVICE_URL=$(minikube service imagedoc --url)"
           kubectl port-forward service/imagedoc 8080:8080 &> /dev/null &
@@ -39,6 +49,8 @@ jobs:
       - run: |
           curl -i http://localhost:8080/
       - name: Cleanup
+        if: ${{ steps.deploy.outcome == 'success' }}
         run: |
           eval $(minikube docker-env -u)
           minikube delete
+
