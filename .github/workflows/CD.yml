@@ -25,7 +25,7 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -f ./Dockerfile -t local/imagedoc .
+          docker build -f C:\Users\redve\OneDrive\Desktop\Semester4\DOC1\repos\demo\Dockerfile -t local/imagedoc C:\Users\redve\OneDrive\Desktop\Semester4\DOC1\repos\demo
           echo -n "Verifying images: "
           docker images
       - name: Deploy to Minikube
