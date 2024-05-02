@@ -20,6 +20,8 @@ jobs:
         run: kubectl get pods -A
       - name: Debug - List files in target directory
         run: ls -la target
+      - name: Debug - List files in current directory
+        run: ls -la .
       - name: Debug - Print contents of Dockerfile
         run: cat Dockerfile
       - name: Build Image
