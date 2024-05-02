@@ -1,7 +1,6 @@
 name: CD - Deploy to Minikube using Github Actions
 
 on:
-  # Trigger the workflow on push from the master/main branch or on pull request test merge
   push:
     branches: [main]
   pull_request:
@@ -9,10 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Build job
   job1:
     name: Build and Deploy to Minikube
-    # Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +22,7 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build -f C:\Users\redve\OneDrive\Desktop\Semester4\DOC1\repos\demo\Dockerfile -t local/imagedoc C:\Users\redve\OneDrive\Desktop\Semester4\DOC1\repos\demo
+          docker build -f Dockerfile -t local/imagedoc .
           echo -n "Verifying images: "
           docker images
       - name: Deploy to Minikube
