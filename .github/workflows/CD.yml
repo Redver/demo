@@ -18,6 +18,10 @@ jobs:
         uses: medyagh/setup-minikube@latest
       - name: Try the cluster!
         run: kubectl get pods -A
+      - name: Debug - List files in target directory
+        run: ls -la target
+      - name: Debug - Print contents of Dockerfile
+        run: cat Dockerfile
       - name: Build Image
         run: |
           export SHELL=/bin/bash
