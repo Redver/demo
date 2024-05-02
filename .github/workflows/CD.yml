@@ -27,11 +27,9 @@ jobs:
           docker images
       - name: Deploy to Minikube
         run: |
-          kubectl get all
           kubectl apply -f deploy.yaml
-          kubectl get all
           kubectl get pods --show-labels
-          kubectl wait --for=condition=Ready pod -l app=app --timeout=5m
+          kubectl wait --for=condition=Ready pod -l app=demo --timeout=5m
           kubectl get all
       - name: Test service URLs
         run: |
