@@ -28,8 +28,7 @@ jobs:
       - name: Deploy to Minikube
         run: |
           kubectl apply -f deploy.yaml
-          kubectl wait --for=condition=Ready pod -l app=imagedoc
-          kubectl wait --for=condition=Ready pod -l app=database
+          kubectl wait --for=condition=Ready pod -l app=assignmentapp
           kubectl get all
       - name: Test service URLs
         run: |
