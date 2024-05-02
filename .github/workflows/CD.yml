@@ -34,10 +34,10 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          echo "SERVICE_URL=$(minikube service imagedoc --url)"
-          kubectl port-forward service/imagedoc 8080:8080 &> /dev/null &
+          echo "SERVICE_URL=$(minikube service demo --url)"
+          kubectl port-forward service/demo 8080:8080 &> /dev/null &
           sleep 5
-          kubectl port-forward service/imagedoc 8080:8080 &> /dev/null &
+          kubectl port-forward service/demo 8080:8080 &> /dev/null &
       - run: |
           curl -i http://localhost:8080/
       - name: Cleanup
