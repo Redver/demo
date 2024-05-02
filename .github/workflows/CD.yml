@@ -33,6 +33,7 @@ jobs:
           kubectl get all
       - name: Test service URLs
         run: |
+          minikube service list
           echo "SERVICE_URL=$(minikube service imagedoc --url)"
           kubectl port-forward service/imagedoc 8080:8080 &> /dev/null &
           sleep 5
