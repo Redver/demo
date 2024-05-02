@@ -1,0 +1,9 @@
+com\example\demo\Controllers\TestController.class
+com\example\demo\DataAccess\DatabaseSetup.class
+com\example\demo\DemoApplication.class
+com\example\demo\Model\Post.class
+com\example\demo\DataAccess\DatabaseConnection.class
+com\example\demo\DataAccess\DatabaseManager.class
+com\example\demo\Services\IPostService.class
+com\example\demo\Controllers\PostController.class
+com\example\demo\Services\PostService.class
