@@ -31,13 +31,12 @@ jobs:
           kubectl get pods --show-labels
           kubectl wait --for=condition=Ready pod -l app=demo --timeout=5m
           kubectl get all
-      - name: Echo Service URL
-        run: |
-          echo "Service URL: $(minikube service demo --url)"
       - name: Test service URLs
         run: |
           minikube service list
+          echo "SERVICE_URL=$(minikube service demo --url)"
           kubectl port-forward service/demo 8080:8080 &> /dev/null &
           sleep 5
+          kubectl port-forward service/demo 8080:8080 &> /dev/null &
       - run: |
           curl -i http://localhost:8080/
