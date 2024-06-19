@@ -22,6 +22,28 @@
 <iframe name="postFrame" style="display: none;"></iframe>
 <h1>All Posts</h1>
 
+<div th:if="${not #lists.isEmpty(posts)}">
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.content}"></td>
+            <td th:text="${post.category}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${#lists.isEmpty(posts)}">
+    <p>No posts available.</p>
+</div>
+
 <div id="postsContainer">
     <!-- Will refactor as react when I've learned react -->
 </div>
