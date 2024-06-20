@@ -44,9 +44,6 @@ jobs:
       - name: List target directory contents
         run: ls -l target
 
-      - name: Check SHA-256 checksum of the JAR file
-        run: sha256sum target/demo-0.0.1-SNAPSHOT.jar
-
       - name: Create staging directory and copy JAR files
         run: |
           mkdir staging
@@ -54,16 +51,3 @@ jobs:
 
       - name: List staging directory contents
         run: ls -l staging
-
-      - name: Check SHA-256 checksum of the staged JAR file
-        run: sha256sum staging/demo-0.0.1-SNAPSHOT.jar
-
-      - name: Commit and push JAR file
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b add-jar
-          cp staging/demo-0.0.1-SNAPSHOT.jar .
-          git add demo-0.0.1-SNAPSHOT.jar
-          git commit -m 'Add JAR file'
-          git push origin add-jar
